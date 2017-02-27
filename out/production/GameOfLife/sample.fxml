@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="masterBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppController">
+  <children>
+      <BorderPane fx:id="bP">
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <SplitPane dividerPositions="0.5">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label alignment="CENTER" text="Prefab Selections:" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets right="20.0" top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Button fx:id="emptyButton2" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetBoard" text="Empty" />
+                                    <Button fx:id="randomButton" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#changeToPreset" text="Random">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="gosperButton" mnemonicParsing="false" onAction="#changeToPreset" text="Glider Gun" />
+                                    <Button fx:id="almostFullButton" mnemonicParsing="false" onAction="#changeToPreset" text="Almost Full" />
+                                    <Button fx:id="checkerBoardButton" layoutX="308.0" layoutY="10.0" mnemonicParsing="false" onAction="#changeToPreset" text="CheckerBoard" />
+                                    <Button fx:id="valentineButton" layoutX="383.0" layoutY="10.0" mnemonicParsing="false" onAction="#changeToPreset" text="Valentine" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" />
+                    </items>
+                  </SplitPane>
+               </children>
+            </HBox>
+         </top>
+         <left>
+          <AnchorPane maxWidth="160.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox>
+                     <children>
+                        <SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="100.0" orientation="VERTICAL">
+                          <items>
+                            <AnchorPane>
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <ToggleButton fx:id="pauseButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#togglePause" text="Play" textFill="#03af19">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </ToggleButton>
+                                          <Button fx:id="simulateFrameButton" alignment="CENTER" layoutX="36.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="37.0" minWidth="100.0" mnemonicParsing="false" onAction="#simulateSingleFrame" text="Simulate Frame" textAlignment="CENTER" textFill="#d000b1" wrapText="true">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button fx:id="emptyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#resetBoard" text="Reset Board" textFill="#0900ff">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="resetCamera" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#resetCamera" text="Reset Camera" textAlignment="CENTER" textFill="#7c00d9">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="clearFlagButton" disable="true" layoutX="30.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#clearFlags" text="Clear Flags" textAlignment="CENTER" textFill="#f22019">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label minWidth="120.0" prefWidth="150.0" text="Current Frames Per Second:" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label fx:id="framesValue" alignment="CENTER" text="60" textAlignment="RIGHT" textFill="#00b518" textOverrun="CLIP">
+                                                   <font>
+                                                      <Font name="Arial Black" size="50.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <Label layoutX="10.0" layoutY="10.0" minWidth="120.0" prefWidth="150.0" text="Current Board Updates Per Second:" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label fx:id="updatesValue" alignment="CENTER" minWidth="50.0" text="60" textAlignment="RIGHT" textFill="#007ec2" textOverrun="CLIP">
+                                                   <font>
+                                                      <Font name="Arial Black" size="50.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="closeButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#closeProgram" prefHeight="25.0" prefWidth="100.0" text="Close Program" textAlignment="CENTER" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label alignment="CENTER" text="Left Click : Toggle Cell" textAlignment="CENTER" />
+                              <Label alignment="CENTER" layoutX="11.0" layoutY="27.0" prefHeight="36.0" prefWidth="150.0" text="Left Click Drag: Pan Camera" textAlignment="CENTER" wrapText="true" />
+                              <Label alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="27.0" prefHeight="45.0" prefWidth="150.0" text="Shift + Left Click Drag: Activate Multiple Cells" textAlignment="CENTER" wrapText="true" />
+                              <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" text="Right Click : Toggle Flag" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+          <AnchorPane fx:id="canvasContainerAnchor" maxHeight="1000.0" maxWidth="1000.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Canvas fx:id="gameCanvas" height="700.0" width="700.0">
+                     <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                     </cursor></Canvas>
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <SplitPane dividerPositions="0.46471600688468157">
+                    <items>
+                      <AnchorPane>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label alignment="CENTER" maxWidth="250.0" text="Please enter the filename or relative path for the pattern to be saved by the current screen capture:" textAlignment="CENTER" wrapText="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <TextField fx:id="patternFileNameTextField" alignment="CENTER" onAction="#saveCameraViewAsPattern" promptText="filename" />
+                                          <Label alignment="CENTER" text=".rle" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="savePatternButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveCameraViewAsPattern" text="Save Pattern" textAlignment="CENTER" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label alignment="CENTER" maxWidth="250.0" text="Please enter the filename or relative path for the pattern to be loaded onto the board:" textAlignment="CENTER" wrapText="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <TextField fx:id="loadPatternFilenameField" alignment="CENTER" onAction="#loadPatternByFilename" promptText="filename" />
+                                          <Label alignment="CENTER" text=".rle" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="loadPatternByNameButton" alignment="CENTER" mnemonicParsing="false" onAction="#loadPatternByFilename" text="Load Pattern" textAlignment="CENTER" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+                  <SplitPane dividerPositions="0.5042194092827004" minHeight="100.0">
+                    <items>
+                      <AnchorPane>
+                           <children>
+                              <VBox layoutY="-1.0">
+                                 <children>
+                                    <TextField alignment="CENTER" editable="false" text="Example Patterns to Load at Flags" />
+                                    <VBox>
+                                       <children>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="patternButton3" mnemonicParsing="false" onAction="#loadPatternByButtonName" text="pulsar.rle" />
+                                                <Button fx:id="patternButton2" mnemonicParsing="false" onAction="#loadPatternByButtonName" text="BLSE.rle" />
+                                                <Button fx:id="patternButton7" layoutX="121.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadPatternByButtonName" text="heart.rle" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="patternButton1" mnemonicParsing="false" onAction="#loadPatternByButtonName" text="frothingPuffer.rle" />
+                                                <Button fx:id="patternButton4" mnemonicParsing="false" onAction="#loadPatternByButtonName" text="barge.rle" />
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Button fx:id="patternButton6" mnemonicParsing="false" onAction="#loadPatternByButtonName" text="all/vgun.rle" />
+                                                <Button fx:id="patternButton5" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadPatternByButtonName" text="all/6enginecordershipgun.rle" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                      <AnchorPane prefHeight="100.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <TextField editable="false" minHeight="25.0" minWidth="120.0" prefHeight="25.0" text="Please enter coordinates at which to flag:" />
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <TextField alignment="CENTER" layoutX="66.0" layoutY="10.0" minHeight="20.0" minWidth="100.0" onAction="#flagOnInputCoords" prefHeight="20.0" prefWidth="100.0" promptText="X Coordinate:" fx:id="xFlagField" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="yFlagField" alignment="CENTER" minHeight="20.0" minWidth="100.0" onAction="#flagOnInputCoords" prefHeight="20.0" prefWidth="100.0" promptText="Y Coordinate:" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="flagButton" alignment="CENTER" minHeight="20.0" minWidth="100.0" mnemonicParsing="false" onAction="#flagOnInputCoords" prefHeight="25.0" prefWidth="120.0" text="Flag Coordinates" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </HBox>
+         </bottom>
+         <right>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <SplitPane orientation="VERTICAL">
+                    <items>
+                      <AnchorPane>
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" minHeight="20.0" minWidth="70.0" prefHeight="20.0" prefWidth="70.0" promptText="X Coord:" text="X Coord:" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <TextField fx:id="cellColField" alignment="CENTER" minHeight="25.0" minWidth="70.0" onAction="#moveCameraToCoords" prefHeight="25.0" prefWidth="70.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" minHeight="20.0" minWidth="70.0" prefHeight="20.0" prefWidth="70.0" promptText="X Coord:" text="Y Coord:" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <TextField fx:id="cellRowField" alignment="CENTER" minHeight="25.0" minWidth="70.0" onAction="#moveCameraToCoords" prefHeight="25.0" prefWidth="70.0" />
+                                       </children>
+                                    </HBox>
+                                    <Separator />
+                                    <VBox>
+                                       <children>
+                                          <Label text="Camera Speed:" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Slider fx:id="cameraSpeedSlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0">
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding></Slider>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <Separator />
+                                    <HBox>
+                                       <children>
+                                          <Label fx:id="cellSizeLabel" text="Cell Size: 2 Pixels">
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+  </children>
+</VBox>

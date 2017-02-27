@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fillWidth="false" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER" minHeight="30.0">
+                     <children>
+                        <Label alignment="CENTER" text="Number of Threads:" />
+                     </children>
+                  </HBox>
+                  <Slider fx:id="threadSlider" blockIncrement="1.0" majorTickUnit="1.0" max="8.0" min="1.0" minorTickCount="0" prefHeight="50.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" />
+                  <Separator minHeight="15.0" />
+                  <HBox alignment="CENTER" minHeight="30.0">
+                     <children>
+                        <Label fx:id="currentSizeLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" text="Grid Dimensions:" />
+                     </children>
+                  </HBox>
+                  <Slider fx:id="sizeSlider" blockIncrement="200.0" layoutX="10.0" layoutY="50.0" majorTickUnit="1000.0" max="10000.0" min="1000.0" minHeight="50.0" minWidth="400.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4000.0" />
+                  <Separator layoutX="10.0" layoutY="88.0" minHeight="15.0" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label contentDisplay="CENTER" text="Please refer to the README.txt before operating this program for the first time!" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" minHeight="30.0">
+                     <children>
+                        <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#switchScenes" text="Confirm" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
